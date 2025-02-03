@@ -5,17 +5,16 @@ public class PasswordValidation {
         System.out.println("Hello, World!");
     }
 
-
-    public static boolean validateLength(String pass) {
-        if(!pass.isEmpty() && pass.length() < 8){
+    public static boolean validateLength(String password) {
+        if(!password.isEmpty() && password.length() < 8){
             return false;
         }
-        return !pass.isEmpty();
+        return !password.isEmpty();
     }
 
-    public static boolean containsDigits(String pass) {
-        for (int i = 0; i < pass.length(); i++) {
-            if (pass.charAt(i) >= '0' && pass.charAt(i) <= '9') {
+    public static boolean containsDigits(String password) {
+        for (int i = 0; i < password.length(); i++) {
+            if (password.charAt(i) >= '0' && password.charAt(i) <= '9') {
                 return true;
             }
         }
@@ -23,6 +22,18 @@ public class PasswordValidation {
     }
 
     public static boolean isMixedCase(String password) {
-        return true;
+        boolean containsLowerCase = false;
+        boolean containsUpperCase = false;
+
+        for (int i = 0; i < password.length(); i++) {
+            if (Character.isLowerCase(password.charAt(i))) {
+                containsLowerCase = true;
+            }
+            if (Character.isUpperCase(password.charAt(i))) {
+                containsUpperCase = true;
+            }
+        }
+
+        return containsLowerCase && containsUpperCase;
     }
 }

@@ -88,8 +88,19 @@ class PasswordValidationTest {
         @Test
         void isMixedCase_whenPasswordIsMixedCase_returnTrue(){
             // GIVEN
-            String password ="aBcDeFgH";
+            String password ="aBcDeF78";
             boolean expected = true;
+            // WHEN
+            boolean actual = PasswordValidation.isMixedCase(password);
+            // THEN
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        void isMixedCase_whenPasswordIsLowerCase_returnFalse(){
+            // GIVEN
+            String password ="abc45678";
+            boolean expected = false;
             // WHEN
             boolean actual = PasswordValidation.isMixedCase(password);
             // THEN
