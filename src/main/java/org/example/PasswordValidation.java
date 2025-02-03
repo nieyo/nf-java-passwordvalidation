@@ -6,10 +6,7 @@ public class PasswordValidation {
     }
 
     public static boolean validateLength(String password) {
-        if(!password.isEmpty() && password.length() < 8){
-            return false;
-        }
-        return !password.isEmpty();
+        return password.length() >= 8;
     }
 
     public static boolean containsDigits(String password) {
