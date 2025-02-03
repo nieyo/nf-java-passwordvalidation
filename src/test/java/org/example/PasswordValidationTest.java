@@ -140,6 +140,19 @@ class PasswordValidationTest {
             );
 
         }
+
+        @Test
+        void isCommon_whenPasswordIsNotCommonlyUsed_returnFalse(){
+            // GIVEN
+            String password ="s8g7sdh4dfh9";
+
+            boolean expected = false;
+            // WHEN
+            boolean actual = PasswordValidation.isCommon(password);
+            // THEN
+            assertEquals(expected, actual);
+
+        }
     }
 
 }
