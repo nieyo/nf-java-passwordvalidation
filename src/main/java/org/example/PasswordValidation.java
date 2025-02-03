@@ -1,6 +1,8 @@
 package org.example;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class PasswordValidation {
     public static void main(String[] args) {
@@ -63,25 +65,38 @@ public class PasswordValidation {
     }
 
     public static String createNew(int length) {
-        // needs refactoring, could end in an infinite loop
+        // allowed chars
+        String lowercase = "abcdefghijklmnopqrstuvwxyz";
+        String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String digits = "0123456789";
+        String special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        String allChars = lowercase + uppercase + digits + special;
+
+        // add char's from every category
         SecureRandom random = new SecureRandom();
-        int randomInt;
-        String allowedChars="0123456789abcdefghijklmnopqrstuvwxyzABCDFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-        String password = "";
+        ArrayList<Character> passwordChars = new ArrayList<>(length);
 
-        for (int i = 0; i < length; i++) {
-            randomInt = random.nextInt(allowedChars.length());
-            password = password + allowedChars.charAt(randomInt);
+        passwordChars.add(lowercase.charAt(random.nextInt(lowercase.length())));
+        passwordChars.add(uppercase.charAt(random.nextInt(uppercase.length())));
+        passwordChars.add(digits.charAt(random.nextInt(digits.length())));
+        passwordChars.add(special.charAt(random.nextInt(special.length())));
 
-            if (password.length() == length) {
-                if (!isMixedCase(password) || !containsDigits(password) || !containsSpecialChars(password) || isCommon(password)){
-                    password = password.substring(1);
-                    i--;
-                }
-            }
+        // fill the rest randomly
+        for (int i = 4; i < length; i++) {
+            passwordChars.add(allChars.charAt(random.nextInt(allChars.length())));
         }
 
-        return password;
+        // shuffle
+        Collections.shuffle(passwordChars, new SecureRandom());
+
+        // convert list to string
+        StringBuilder password = new StringBuilder(length);
+        for (char c : passwordChars) {
+            password.append(c);
+        }
+
+        return password.toString();
+
     }
 
     public static String createNew() {

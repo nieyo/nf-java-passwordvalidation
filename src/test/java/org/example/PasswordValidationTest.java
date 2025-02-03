@@ -201,8 +201,8 @@ class PasswordValidationTest {
 
         @Test
         void createNew_whenCreateTwoPasswords_shouldBeDifferent() {
-            String password1 = PasswordValidation.createNew();
-            String password2 = PasswordValidation.createNew();
+            String password1 = PasswordValidation.createNew(16);
+            String password2 = PasswordValidation.createNew(16);
 
             assertNotEquals(password1, password2);
         }
