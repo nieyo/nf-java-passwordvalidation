@@ -165,6 +165,17 @@ class PasswordValidationTest {
             // THEN
             assertEquals(expected, actual);
         }
+
+        @Test
+        void containsSpecialChars_whenPasswordContainsNoSpecialChars_returnFalse(){
+            // GIVEN
+            String password ="s8g7sdh4dfh9";
+            boolean expected = false;
+            // WHEN
+            boolean actual = PasswordValidation.containsSpecialChars(password);
+            // THEN
+            assertEquals(expected, actual);
+        }
     }
 
 }
