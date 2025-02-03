@@ -49,10 +49,11 @@ public class PasswordValidation {
     }
 
     public static boolean containsSpecialChars(String password) {
-        String specialCharacter = "%";
 
-        for (int i = 0; i < password.length(); i++) {
-            if (password.charAt(i) == specialCharacter.charAt(0)) {
+        String specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+        for (int i = 0; i < specialCharacters.length(); i++) {
+            if(password.indexOf(specialCharacters.charAt(i)) >= 0){
                 return true;
             }
         }

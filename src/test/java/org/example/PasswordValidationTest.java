@@ -158,12 +158,18 @@ class PasswordValidationTest {
         @Test
         void containsSpecialChars_whenPasswordContainsSpecialChars_returnTrue(){
             // GIVEN
-            String password ="s8g7sdh4%dfh9";
-            boolean expected = true;
+            String password1 ="s8g7sdh4%dfh9";
+            String password2 ="s8g7sdh4=dfh9";
+            boolean expected1 = true;
+            boolean expected2 = true;
             // WHEN
-            boolean actual = PasswordValidation.containsSpecialChars(password);
+            boolean actual1 = PasswordValidation.containsSpecialChars(password1);
+            boolean actual2 = PasswordValidation.containsSpecialChars(password2);
             // THEN
-            assertEquals(expected, actual);
+            assertAll(
+                    () -> assertEquals(expected1, actual1),
+                    () -> assertEquals(expected2, actual2)
+            );
         }
 
         @Test
@@ -177,5 +183,4 @@ class PasswordValidationTest {
             assertEquals(expected, actual);
         }
     }
-
 }
