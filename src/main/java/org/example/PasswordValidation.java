@@ -47,4 +47,15 @@ public class PasswordValidation {
         }
         return false;
     }
+
+    public static boolean containsSpecialChars(String password) {
+        String specialCharacter = "%";
+
+        for (int i = 0; i < password.length(); i++) {
+            if (password.charAt(i) == specialCharacter.charAt(0)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

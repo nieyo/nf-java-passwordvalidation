@@ -145,13 +145,25 @@ class PasswordValidationTest {
         void isCommon_whenPasswordIsNotCommonlyUsed_returnFalse(){
             // GIVEN
             String password ="s8g7sdh4dfh9";
-
             boolean expected = false;
             // WHEN
             boolean actual = PasswordValidation.isCommon(password);
             // THEN
             assertEquals(expected, actual);
+        }
+    }
 
+    @Nested
+    class containsSpecialChars{
+        @Test
+        void containsSpecialChars_whenPasswordContainsSpecialChars_returnTrue(){
+            // GIVEN
+            String password ="s8g7sdh4%dfh9";
+            boolean expected = true;
+            // WHEN
+            boolean actual = PasswordValidation.containsSpecialChars(password);
+            // THEN
+            assertEquals(expected, actual);
         }
     }
 
