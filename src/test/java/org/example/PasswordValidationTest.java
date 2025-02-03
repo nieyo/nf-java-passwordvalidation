@@ -68,6 +68,18 @@ class PasswordValidationTest {
             // THEN
             assertEquals(expected, actual);
         }
+
+        @Test
+        void containsDigits_whenPasswordContainsNoDigits(){
+            // GIVEN
+            String pass ="aBcDeFgH";
+            boolean expected = false;
+            // WHEN
+            boolean actual = PasswordValidation.containsDigits(pass);
+            // THEN
+            assertEquals(expected, actual);
+        }
+
     }
 
 
