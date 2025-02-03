@@ -15,7 +15,6 @@ public class PasswordValidation {
 
     public static boolean containsDigits(String pass) {
         for (int i = 0; i < pass.length(); i++) {
-            char passChar = pass.charAt(i);
             if (pass.charAt(i) >= '0' && pass.charAt(i) <= '9') {
                 return true;
             }
