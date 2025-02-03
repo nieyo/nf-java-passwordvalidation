@@ -1,5 +1,7 @@
 package org.example;
 
+import java.security.SecureRandom;
+
 public class PasswordValidation {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
@@ -50,7 +52,7 @@ public class PasswordValidation {
 
     public static boolean containsSpecialChars(String password) {
 
-        String specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        String specialCharacters = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
         for (int i = 0; i < specialCharacters.length(); i++) {
             if(password.indexOf(specialCharacters.charAt(i)) >= 0){
@@ -60,7 +62,30 @@ public class PasswordValidation {
         return false;
     }
 
-    public static String createNew() {
-        return "aBcD567!";
+    public static String createNew(int length) {
+        // needs refactoring, could end in an infinite loop
+        SecureRandom random = new SecureRandom();
+        int randomInt;
+        String allowedChars="0123456789abcdefghijklmnopqrstuvwxyzABCDFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        String password = "";
+
+        for (int i = 0; i < length; i++) {
+            randomInt = random.nextInt(allowedChars.length());
+            password = password + allowedChars.charAt(randomInt);
+
+            if (password.length() == length) {
+                if (!isMixedCase(password) || !containsDigits(password) || !containsSpecialChars(password) || isCommon(password)){
+                    password = password.substring(1);
+                    i--;
+                }
+            }
+        }
+
+        return password;
     }
+
+    public static String createNew() {
+        return createNew(8);
+    }
+
 }

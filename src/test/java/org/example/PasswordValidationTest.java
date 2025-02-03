@@ -198,5 +198,13 @@ class PasswordValidationTest {
                     () -> assertFalse(PasswordValidation.isCommon(password))
             );
         }
+
+        @Test
+        void createNew_whenCreateTwoPasswords_shouldBeDifferent() {
+            String password1 = PasswordValidation.createNew();
+            String password2 = PasswordValidation.createNew();
+
+            assertNotEquals(password1, password2);
+        }
     }
 }
