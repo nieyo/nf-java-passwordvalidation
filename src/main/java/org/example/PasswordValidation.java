@@ -7,6 +7,6 @@ public class PasswordValidation {
 
 
     public static boolean validateLength(String pass) {
-        return true;
+        return !pass.isEmpty();
     }
 }
