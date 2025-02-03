@@ -7,6 +7,9 @@ public class PasswordValidation {
 
 
     public static boolean validateLength(String pass) {
+        if(!pass.isEmpty() && pass.length() < 8){
+            return false;
+        }
         return !pass.isEmpty();
     }
 }

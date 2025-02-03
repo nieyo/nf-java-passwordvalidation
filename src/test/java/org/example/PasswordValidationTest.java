@@ -18,6 +18,17 @@ class PasswordValidationTest {
     }
 
     @Test
+    void validateLength_whenLengthIsShorterThanEight(){
+        // GIVEN
+        String pass ="12345";
+        boolean expected = false;
+        // WHEN
+        boolean actual = PasswordValidation.validateLength(pass);
+        // THEN
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void validateLength_whenLengthIsEight(){
         // GIVEN
         String pass ="12345678";
