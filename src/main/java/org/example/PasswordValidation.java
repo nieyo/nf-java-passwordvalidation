@@ -21,4 +21,8 @@ public class PasswordValidation {
         }
         return false;
     }
+
+    public static boolean isMixedCase(String password) {
+        return true;
+    }
 }

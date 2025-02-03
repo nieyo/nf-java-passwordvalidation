@@ -13,10 +13,10 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsZero_returnFalse(){
             // GIVEN
-            String pass ="";
+            String password ="";
             boolean expected = false;
             // WHEN
-            boolean actual = PasswordValidation.validateLength(pass);
+            boolean actual = PasswordValidation.validateLength(password);
             // THEN
             assertEquals(expected, actual);
         }
@@ -24,10 +24,10 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsShorterThanEight_returnFalse(){
             // GIVEN
-            String pass ="aB345";
+            String password ="aB345";
             boolean expected = false;
             // WHEN
-            boolean actual = PasswordValidation.validateLength(pass);
+            boolean actual = PasswordValidation.validateLength(password);
             // THEN
             assertEquals(expected, actual);
         }
@@ -35,10 +35,10 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsEight_returnTrue(){
             // GIVEN
-            String pass ="aB345678";
+            String password ="aB345678";
             boolean expected = true;
             // WHEN
-            boolean actual = PasswordValidation.validateLength(pass);
+            boolean actual = PasswordValidation.validateLength(password);
             // THEN
             assertEquals(expected, actual);
         }
@@ -46,10 +46,10 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsLongerThanEight_returnTrue(){
             // GIVEN
-            String pass ="aB23456789";
+            String password ="aB23456789";
             boolean expected = true;
             // WHEN
-            boolean actual = PasswordValidation.validateLength(pass);
+            boolean actual = PasswordValidation.validateLength(password);
             // THEN
             assertEquals(expected, actual);
         }
@@ -61,10 +61,10 @@ class PasswordValidationTest {
         @Test
         void containsDigits_whenPasswordContainsDigits_returnTrue(){
             // GIVEN
-            String pass ="aB2345678";
+            String password ="aB2345678";
             boolean expected = true;
             // WHEN
-            boolean actual = PasswordValidation.containsDigits(pass);
+            boolean actual = PasswordValidation.containsDigits(password);
             // THEN
             assertEquals(expected, actual);
         }
@@ -72,14 +72,29 @@ class PasswordValidationTest {
         @Test
         void containsDigits_whenPasswordContainsNoDigits_returnFalse(){
             // GIVEN
-            String pass ="aBcDeFgH";
+            String password ="aBcDeFgH";
             boolean expected = false;
             // WHEN
-            boolean actual = PasswordValidation.containsDigits(pass);
+            boolean actual = PasswordValidation.containsDigits(password);
             // THEN
             assertEquals(expected, actual);
         }
 
+    }
+
+    @Nested
+    class isMixedCase {
+
+        @Test
+        void isMixedCase_whenPasswordIsMixedCase_returnTrue(){
+            // GIVEN
+            String password ="aBcDeFgH";
+            boolean expected = true;
+            // WHEN
+            boolean actual = PasswordValidation.isMixedCase(password);
+            // THEN
+            assertEquals(expected, actual);
+        }
     }
 
 }
