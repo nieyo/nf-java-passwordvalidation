@@ -12,4 +12,8 @@ public class PasswordValidation {
         }
         return !pass.isEmpty();
     }
+
+    public static boolean containsDigits(String pass) {
+        return true;
+    }
 }
