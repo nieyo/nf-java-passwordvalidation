@@ -26,10 +26,10 @@ public class PasswordValidation {
         boolean containsUpperCase = false;
 
         for (int i = 0; i < password.length(); i++) {
-            if (Character.isLowerCase(password.charAt(i))) {
+            if (Character.isLowerCase(password.charAt(i)) && !containsLowerCase) {
                 containsLowerCase = true;
             }
-            if (Character.isUpperCase(password.charAt(i))) {
+            if (Character.isUpperCase(password.charAt(i)) && !containsUpperCase) {
                 containsUpperCase = true;
             }
         }
