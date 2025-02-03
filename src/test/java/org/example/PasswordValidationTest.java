@@ -119,4 +119,27 @@ class PasswordValidationTest {
         }
     }
 
+    @Nested
+    class isCommon{
+
+        @Test
+        void isCommon_whenPasswordIsCommonlyUsed_returnTrue(){
+            // GIVEN
+            String password1 ="Password1";
+            String password2 ="Aa345678";
+
+            boolean expected1 = true;
+            boolean expected2 = true;
+            // WHEN
+            boolean actual1 = PasswordValidation.isCommon(password1);
+            boolean actual2 = PasswordValidation.isCommon(password2);
+            // THEN
+            assertAll(
+                    () -> assertEquals(expected1, actual1),
+                    () -> assertEquals(expected2, actual2)
+            );
+
+        }
+    }
+
 }

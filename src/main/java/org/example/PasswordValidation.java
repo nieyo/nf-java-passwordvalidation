@@ -33,4 +33,18 @@ public class PasswordValidation {
 
         return containsLowerCase && containsUpperCase;
     }
+
+    public static boolean isCommon(String password) {
+        String[] commonPasswords = {
+                "Password1",
+                "Aa345678"
+        };
+
+        for (String commonPassword : commonPasswords){
+            if(password.equals(commonPassword)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
