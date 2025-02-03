@@ -24,7 +24,7 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsShorterThanEight_returnFalse(){
             // GIVEN
-            String password ="aB345";
+            String password ="12345";
             boolean expected = false;
             // WHEN
             boolean actual = PasswordValidation.validateLength(password);
@@ -35,7 +35,7 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsEight_returnTrue(){
             // GIVEN
-            String password ="aB345678";
+            String password ="12345678";
             boolean expected = true;
             // WHEN
             boolean actual = PasswordValidation.validateLength(password);
@@ -46,7 +46,7 @@ class PasswordValidationTest {
         @Test
         void validateLength_whenLengthIsLongerThanEight_returnTrue(){
             // GIVEN
-            String password ="aB23456789";
+            String password ="123456789";
             boolean expected = true;
             // WHEN
             boolean actual = PasswordValidation.validateLength(password);
@@ -61,7 +61,7 @@ class PasswordValidationTest {
         @Test
         void containsDigits_whenPasswordContainsDigits_returnTrue(){
             // GIVEN
-            String password ="aB2345678";
+            String password ="12345678";
             boolean expected = true;
             // WHEN
             boolean actual = PasswordValidation.containsDigits(password);
@@ -72,7 +72,7 @@ class PasswordValidationTest {
         @Test
         void containsDigits_whenPasswordContainsNoDigits_returnFalse(){
             // GIVEN
-            String password ="aBcDeFgH";
+            String password ="abc";
             boolean expected = false;
             // WHEN
             boolean actual = PasswordValidation.containsDigits(password);
@@ -88,7 +88,7 @@ class PasswordValidationTest {
         @Test
         void isMixedCase_whenPasswordIsMixedCase_returnTrue(){
             // GIVEN
-            String password ="aBcDeF78";
+            String password ="aBcD";
             boolean expected = true;
             // WHEN
             boolean actual = PasswordValidation.isMixedCase(password);
@@ -97,9 +97,20 @@ class PasswordValidationTest {
         }
 
         @Test
-        void isMixedCase_whenPasswordIsLowerCase_returnFalse(){
+        void isMixedCase_whenPasswordContainsLowerCaseOnly_returnFalse(){
             // GIVEN
-            String password ="abc45678";
+            String password ="abcd";
+            boolean expected = false;
+            // WHEN
+            boolean actual = PasswordValidation.isMixedCase(password);
+            // THEN
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        void isMixedCase_whenPasswordContainsUpperCaseOnly_returnFalse(){
+            // GIVEN
+            String password ="ABCD";
             boolean expected = false;
             // WHEN
             boolean actual = PasswordValidation.isMixedCase(password);
