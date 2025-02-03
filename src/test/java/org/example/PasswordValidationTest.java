@@ -183,4 +183,20 @@ class PasswordValidationTest {
             assertEquals(expected, actual);
         }
     }
+
+    @Nested
+    class createNew{
+        @Test
+        void createNew_whenCreateNew_passAllTests() {
+            String password = PasswordValidation.createNew();
+
+            assertAll(
+                    () -> assertTrue(PasswordValidation.validateLength(password)),
+                    () -> assertTrue(PasswordValidation.containsDigits(password)),
+                    () -> assertTrue(PasswordValidation.isMixedCase(password)),
+                    () -> assertTrue(PasswordValidation.containsSpecialChars(password)),
+                    () -> assertFalse(PasswordValidation.isCommon(password))
+            );
+        }
+    }
 }

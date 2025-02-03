@@ -59,4 +59,8 @@ public class PasswordValidation {
         }
         return false;
     }
+
+    public static String createNew() {
+        return "aBcD567!";
+    }
 }
